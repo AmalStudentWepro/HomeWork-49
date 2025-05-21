@@ -1,3 +1,4 @@
+
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs';
 
 const main = document.createElement('main');
@@ -13,10 +14,11 @@ fetch('db.json')
   })
   .then(function(data) {
     renderGoods(data.goods);
-  });
+});
 
 function createHeader() {
   const header = document.createElement('header');
+  header.className = 'site-header';
 
   const logo = document.createElement('div');
   logo.className = 'logo';
@@ -145,16 +147,8 @@ function createCategories() {
     container.appendChild(item);
   });
 
-  main.appendChild(container); 
+  main.appendChild(container);
 }
-
-fetch('db.json')
-.then(function(response) {
-  return response.json();
-})
-.then(function(data) {
-  renderGoods(data.goods);
-});
 
 function renderGoods(goods) {
   let container = document.getElementById('goods');
@@ -162,7 +156,8 @@ function renderGoods(goods) {
   if (!container) {
     container = document.createElement('div');
     container.id = 'goods';
-    main.appendChild(container); 
+    container.className = 'goods-section';
+    main.appendChild(container);
   }
 
   container.innerHTML = '';

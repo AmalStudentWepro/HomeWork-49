@@ -1,5 +1,7 @@
-
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs';
+import { renderGoodsSection } from './utils/render.js';
+// import { createHeader } from './components/Header.js'; // потом доделаю (Амаль)
+
 
 const main = document.createElement('main');
 document.body.appendChild(main);
@@ -9,70 +11,66 @@ createSwiperSlider();
 createCategories();
 
 fetch('db.json')
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
-    renderGoods(data.goods);
-});
+  .then(res => res.json())
+  .then(data => renderGoodsSection(data.goods, main));
 
 function createHeader() {
-  const header = document.createElement('header');
-  header.className = 'site-header';
+    const header = document.createElement('header');
+    header.className = 'site-header';
 
-  const logo = document.createElement('div');
-  logo.className = 'logo';
+    const logo = document.createElement('div');
+    logo.className = 'logo';
 
-  const logoImg = document.createElement('img');
-  logoImg.src = '/public/uzum.png';
+    const logoImg = document.createElement('img');
+    logoImg.src = '/public/uzum.png';
 
-  const logoText = document.createElement('span');
-  logoText.textContent = 'Uzum market';
+    const logoText = document.createElement('span');
+    logoText.textContent = 'Uzum market';
 
-  logo.append(logoImg, logoText);
+    logo.append(logoImg, logoText);
 
-  const catalog = document.createElement('button');
-  catalog.className = 'catalog-button';
-  catalog.textContent = 'Каталог';
+    const catalog = document.createElement('button');
+    catalog.className = 'catalog-button';
+    catalog.textContent = 'Каталог';
 
-  const search = document.createElement('div');
-  search.className = 'search';
+    const search = document.createElement('div');
+    search.className = 'search';
 
-  const input = document.createElement('input');
-  input.placeholder = 'Искать товары и категории';
+    const input = document.createElement('input');
+    input.placeholder = 'Искать товары и категории';
 
-  const searchIcon = document.createElement('img');
-  searchIcon.src = 'https://cdn-icons-png.flaticon.com/512/622/622669.png';
-  searchIcon.alt = 'Поиск';
+    const searchIcon = document.createElement('img');
+    searchIcon.src = 'https://cdn-icons-png.flaticon.com/512/622/622669.png';
+    searchIcon.alt = 'Поиск';
 
-  search.append(input, searchIcon);
+    search.append(input, searchIcon);
 
-  const actions = document.createElement('div');
-  actions.className = 'actions';
+    const actions = document.createElement('div');
+    actions.className = 'actions';
 
-  const icons = [
-    { img: '/public/user.webp', text: 'Войти' },
-    { img: '/public/heart.webp', text: 'Избранное' },
-    { img: '/public/korzina.png', text: 'Корзина' }
-  ];
+    const icons = [
+      { img: '/public/user.webp', text: 'Войти' },
+      { img: '/public/heart.webp', text: 'Избранное' },
+      { img: '/public/korzina.png', text: 'Корзина' }
+    ];
 
-  icons.forEach(item => {
-    const icon = document.createElement('a');
-    icon.className = 'icon';
-    icon.href = '#';
+    icons.forEach(item => {
+      const icon = document.createElement('a');
+      icon.className = 'icon';
+      icon.href = '#';
 
-    const img = document.createElement('img');
-    img.src = item.img;
+      const img = document.createElement('img');
+      img.src = item.img;
 
-    const span = document.createElement('span');
-    span.textContent = item.text;
+      const span = document.createElement('span');
+      span.textContent = item.text;
 
-    icon.append(img, span);
-    actions.appendChild(icon);
-  });
+      icon.append(img, span);
+      actions.appendChild(icon);
+    });
 
-  header.append(logo, catalog, search, actions);
-  main.appendChild(header);
+    header.append(logo, catalog, search, actions);
+    main.appendChild(header);
 }
 
 function createSwiperSlider() {
@@ -110,9 +108,11 @@ function createSwiperSlider() {
 
   const prev = document.createElement('div');
   prev.className = 'swiper-button-prev';
+  prev.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
   const next = document.createElement('div');
   next.className = 'swiper-button-next';
+  next.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
   const scrollbar = document.createElement('div');
   scrollbar.className = 'swiper-scrollbar';
@@ -163,51 +163,4 @@ function createCategories() {
   });
 
   main.appendChild(container);
-}
-
-function renderGoods(goods) {
-  let container = document.getElementById('goods');
-
-  if (!container) {
-    container = document.createElement('div');
-    container.id = 'goods';
-    container.className = 'goods-section';
-    main.appendChild(container);
-  }
-
-  container.innerHTML = '';
-
-  for (let i = 0; i < goods.length; i++) {
-    const item = goods[i];
-    const card = document.createElement('div');
-    card.className = 'good-card';
-
-    const img = document.createElement('img');
-    img.src = item.media[0];
-    card.appendChild(img);
-
-    const title = document.createElement('h3');
-    title.textContent = item.title;
-    card.appendChild(title);
-
-    if (item.salePercentage > 0) {
-      const oldPrice = document.createElement('div');
-      oldPrice.className = 'old-price';
-      oldPrice.textContent = item.price + '₽';
-      card.appendChild(oldPrice);
-
-      const salePrice = document.createElement('div');
-      salePrice.className = 'price';
-      const newPrice = Math.floor(item.price * (1 - item.salePercentage / 100));
-      salePrice.textContent = newPrice + '₽';
-      card.appendChild(salePrice);
-    } else {
-      const price = document.createElement('div');
-      price.className = 'price';
-      price.textContent = item.price + '₽';
-      card.appendChild(price);
-    }
-
-    container.appendChild(card);
-  }
 }

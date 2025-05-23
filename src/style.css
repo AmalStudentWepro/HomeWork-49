@@ -198,3 +198,36 @@ header {
   font-size: 14px;
   color: #333;
 }
+
+.goods-title {
+  width: 100%;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 0;
+  content: none !important;
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid #333;
+  border-right: 2px solid #ff6565;
+  transform: rotate(45deg);
+  margin-left: 4px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: rgba(0, 0, 0, 0.244);
+  border-radius: 50%;
+  width: 400px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}

@@ -10,9 +10,10 @@ createHeader();
 createSwiperSlider();
 createCategories();
 
-fetch('db.json')
+fetch("http://localhost:3000/goods")
   .then(res => res.json())
-  .then(data => renderGoodsSection(data.goods, main));
+  .then(data => renderGoodsSection(data, main));
+
 
 function createHeader() {
     const header = document.createElement('header');

@@ -140,11 +140,26 @@ function createCategories() {
   const container = document.createElement('div');
   container.className = 'categories';
 
-  ['Детский мир', 'Гарантия низких цен', 'Модный Базар', 'Товары недели'].forEach(name => {
-    const item = document.createElement('div');
-    item.className = 'category';
-    item.textContent = name;
-    container.appendChild(item);
+  const data = [
+    { name: 'Детский мир', img: '/public/bear.png' },
+    { name: 'Гарантия низких цен', img: '/public/check.png' },
+    { name: 'Модный Базар', img: '/public/jacket.png' },
+    { name: 'Товары недели', img: '/public/star.png' },
+  ];
+
+  data.forEach(({ name, img }) => {
+    const block = document.createElement('div');
+    block.className = 'category';
+
+    const icon = document.createElement('img');
+    icon.src = img;
+    icon.alt = name;
+
+    const span = document.createElement('span');
+    span.textContent = name;
+
+    block.append(icon, span);
+    container.appendChild(block);
   });
 
   main.appendChild(container);

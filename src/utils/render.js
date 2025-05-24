@@ -20,3 +20,4 @@ export function renderGoodsSection(goods, parent, titleText = 'Популярн�
 
   render(goods, container, ProductCard);
 }
+  

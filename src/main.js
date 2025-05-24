@@ -19,7 +19,7 @@ function createHeader() {
     logo.className = 'logo';
 
     const logoImg = document.createElement('img');
-    logoImg.src = '/public/uzum.png';
+    logoImg.src = '/public/img/uzum.png';
 
     const logoText = document.createElement('span');
     logoText.textContent = 'Uzum market';
@@ -46,9 +46,9 @@ function createHeader() {
     actions.className = 'actions';
 
     const icons = [
-      { img: '/public/user.webp', text: 'Войти' },
-      { img: '/public/heart.webp', text: 'Избранное' },
-      { img: '/public/korzina.png', text: 'Корзина' }
+      { img: '/img/user.webp', text: 'Войти' },
+      { img: '/img//heart.webp', text: 'Избранное' },
+      { img: '/img/korzina.png', text: 'Корзина' }
     ];
 
     icons.forEach(item => {
@@ -78,21 +78,21 @@ function createSwiperSlider() {
   wrapper.className = 'swiper-wrapper';
 
   const images = [
-    '/public/slide1.jpg',
-    '/public/slide2.jpg',
-    '/public/slide3.jpg',
-    '/public/slide4.jpg',
-    '/public/slide5.jpg',
-    '/public/slide6.jpg',
-    '/public/slide7.jpg',
-    '/public/slide8.jpg',
-    '/public/slide9.jpg',
-    '/public/slide10.jpg',
-    '/public/slide11.jpg',
-    '/public/slide12.jpg',
-    '/public/slide13.jpg',
-    '/public/slide14.jpg',
-    '/public/slide15.jpg',
+    '/img/slide1.jpg',
+    '/img/slide2.jpg',
+    '/img/slide3.jpg',
+    '/img/slide4.jpg',
+    '/img/slide5.jpg',
+    '/img/slide6.jpg',
+    '/img/slide7.jpg',
+    '/img/slide8.jpg',
+    '/img/slide9.jpg',
+    '/img/slide10.jpg',
+    '/img/slide11.jpg',
+    '/img/slide12.jpg',
+    '/img/slide13.jpg',
+    '/img/slide14.jpg',
+    '/img/slide15.jpg',
   ];
 
   images.forEach(src => {
@@ -147,10 +147,10 @@ function createCategories() {
   container.className = 'categories';
 
   const data = [
-    { name: 'Детский мир', img: '/public/bear.png' },
-    { name: 'Гарантия низких цен', img: '/public/check.png' },
-    { name: 'Модный Базар', img: '/public/jacket.png' },
-    { name: 'Товары недели', img: '/public/star.png' },
+    { name: 'Детский мир', img: '/img/bear.png' },
+    { name: 'Гарантия низких цен', img: '/img/check.png' },
+    { name: 'Модный Базар', img: '/img/jacket.png' },
+    { name: 'Товары недели', img: '/img/star.png' },
   ];
 
   data.forEach(({ name, img }) => {
@@ -171,16 +171,6 @@ function createCategories() {
   main.appendChild(container);
 }
 
-const categories = [
-  { type: 'furniture', title: 'Мебель' },
-  { type: 'PC', title: 'Компьютеры' },
-  { type: 'audio', title: 'Наушники и колонки' },
-  { type: 'TV', title: 'Телевизоры' },
-  { type: 'Kitchen', title: 'Кухонные предметы' }
-];
-
-categories.forEach(category => {
-  axios.get(`http://localhost:3000/goods?type=${category.type}`)
-    .then(res => renderGoodsSection(res.data, main, category.title))
-    .catch(err => console.error(err));
-});
+axios.get('http://localhost:3000/goods')
+  .then(res => renderGoodsSection(res.data, main, 'Все товары'))
+  .catch(err => console.error(err));

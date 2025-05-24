@@ -1,0 +1,126 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #fff;
+  color: #222;
+}
+
+.container {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.thumbnails img {
+  width: 60px;
+  height: 80px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.main-image {
+  position: relative;
+}
+
+.main-image img {
+  width: 300px;
+  height: auto;
+  border: 1px solid #ccc;
+}
+
+
+.info {
+  max-width: 500px;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.new-price {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.old-price {
+  font-size: 18px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.quantity {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.quantity button {
+  width: 30px;
+  height: 30px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.add-cart {
+  background: purple;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.add-fav {
+  border: 1px solid purple;
+  background: white;
+  color: purple;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.fake-text {
+  font-size: 14px;
+  color: #444;
+}
+
+.description {
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.description h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.description p {
+  font-size: 14px;
+  line-height: 1.6;
+}

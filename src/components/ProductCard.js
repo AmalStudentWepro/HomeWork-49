@@ -28,5 +28,9 @@ export function ProductCard(item) {
     card.appendChild(price);
   }
 
+  card.onclick = () => {
+    window.location.href = "/src/pages/product/"
+  }
+
   return card;
 }

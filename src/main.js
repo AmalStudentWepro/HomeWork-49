@@ -1,7 +1,7 @@
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs';
 import { renderGoodsSection } from './utils/render.js';
 // import { createHeader } from './components/Header.js'; // потом доделаю (Амаль)
-
+import axios from 'axios';
 
 const main = document.createElement('main');
 document.body.appendChild(main);
@@ -9,10 +9,6 @@ document.body.appendChild(main);
 createHeader();
 createSwiperSlider();
 createCategories();
-
-fetch("http://localhost:3000/goods")
-  .then(res => res.json())
-  .then(data => renderGoodsSection(data, main));
 
 
 function createHeader() {
@@ -82,12 +78,21 @@ function createSwiperSlider() {
   wrapper.className = 'swiper-wrapper';
 
   const images = [
-    '/public/slide1.png',
-    '/public/slide2.png',
-    '/public/slide3.png',
-    '/public/slide4.png',
-    '/public/slide5.png',
-    '/public/slide6.png',
+    '/public/slide1.jpg',
+    '/public/slide2.jpg',
+    '/public/slide3.jpg',
+    '/public/slide4.jpg',
+    '/public/slide5.jpg',
+    '/public/slide6.jpg',
+    '/public/slide7.jpg',
+    '/public/slide8.jpg',
+    '/public/slide9.jpg',
+    '/public/slide10.jpg',
+    '/public/slide11.jpg',
+    '/public/slide12.jpg',
+    '/public/slide13.jpg',
+    '/public/slide14.jpg',
+    '/public/slide15.jpg',
   ];
 
   images.forEach(src => {
@@ -165,3 +170,17 @@ function createCategories() {
 
   main.appendChild(container);
 }
+
+const categories = [
+  { type: 'furniture', title: 'Мебель' },
+  { type: 'PC', title: 'Компьютеры' },
+  { type: 'audio', title: 'Наушники и колонки' },
+  { type: 'TV', title: 'Телевизоры' },
+  { type: 'Kitchen', title: 'Кухонные предметы' }
+];
+
+categories.forEach(category => {
+  axios.get(`http://localhost:3000/goods?type=${category.type}`)
+    .then(res => renderGoodsSection(res.data, main, category.title))
+    .catch(err => console.error(err));
+});

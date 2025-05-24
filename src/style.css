@@ -203,8 +203,9 @@ header {
   width: 100%;
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 16px;
-  color: #333;
+  margin: 40px 0 16px;
+  color: #7300ff;
+  padding-left: 32px;
 }
 
 .swiper-button-next::after,
@@ -222,7 +223,7 @@ header {
 
 .swiper-button-next,
 .swiper-button-prev {
-  background-color: rgba(0, 0, 0, 0.244);
+  background-color: rgba(79, 79, 79, 0.244);
   border-radius: 50%;
   width: 400px;
   height: 40px;

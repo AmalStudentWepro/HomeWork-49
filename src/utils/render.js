@@ -8,20 +8,13 @@ export function render(arr, place, Component) {
   }
 }
 
-export function renderGoodsSection(goods, parent) {
-  let container = document.getElementById('goods');
-
-  if (!container) {
-    container = document.createElement('div');
-    container.id = 'goods';
-    container.className = 'goods-section';
-    parent.appendChild(container);
-  }
-
-  container.innerHTML = '';
+export function renderGoodsSection(goods, parent, titleText = 'Популярное') {
+  const container = document.createElement('div');
+  container.className = 'goods-section';
+  parent.appendChild(container);
 
   const title = document.createElement('h2');
-  title.textContent = 'Популярное >';
+  title.textContent = `${titleText} >`;
   title.className = 'goods-title';
   container.appendChild(title);
 

@@ -1,21 +1,79 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 0;
-  padding: 20px;
+  padding: 0;
   background: #fff;
   color: #222;
+}
+
+.uzum-header {
+  background: #fff;
+  border-bottom: 1px solid #eaeaea;
+  padding: 12px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  color: #7000FF;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.catalog-btn {
+  background: #F2F3F5;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.right-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.right-links a {
+  text-decoration: none;
+  color: #000;
+}
+
+.cart-count {
+  background: #7000FF;
+  color: white;
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 10px;
+  margin-left: 4px;
 }
 
 .container {
   display: flex;
   gap: 40px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 40px auto;
 }
 
 .gallery {
   display: flex;
-  flex-direction: row;
   gap: 20px;
 }
 
@@ -33,16 +91,10 @@ body {
   cursor: pointer;
 }
 
-.main-image {
-  position: relative;
-}
-
 .main-image img {
   width: 300px;
-  height: auto;
   border: 1px solid #ccc;
 }
-
 
 .info {
   max-width: 500px;
@@ -81,6 +133,7 @@ h1 {
 .quantity button {
   width: 30px;
   height: 30px;
+  font-size: 18px;
 }
 
 .buttons {
@@ -90,24 +143,21 @@ h1 {
 }
 
 .add-cart {
-  background: purple;
+  background: #7000FF;
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 10px 20px;
   cursor: pointer;
+  border-radius: 6px;
 }
 
 .add-fav {
-  border: 1px solid purple;
   background: white;
-  color: purple;
-  padding: 10px 15px;
+  color: #7000FF;
+  border: 1px solid #7000FF;
+  padding: 10px 20px;
   cursor: pointer;
-}
-
-.fake-text {
-  font-size: 14px;
-  color: #444;
+  border-radius: 6px;
 }
 
 .description {
